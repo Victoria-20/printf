@@ -30,6 +30,7 @@ int _printf(const char *format, ...)
 			{
 				i++;
 				str = va_arg(args, char*);	/* Get the next string and store it in str */
+				c_counted++;
 				_print_str(str);
 			}
 			else if (format[i + 1] == '%')	/* if its a percentage sign */
