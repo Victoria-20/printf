@@ -8,9 +8,9 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	int i = 0, c_counted = 0;
-	char *str = "NULL";
+	/* char *str = "NULL"; */
 
-	va_start(args, format); /* Iitialize the arguments */
+	va_start(args, format); /* Initialize the arguments */
 	while (format[i] != '\0')
 	{
 		if (format[i] != '%')
@@ -22,21 +22,20 @@ int _printf(const char *format, ...)
 		{
 			if (format[i + 1] == 'c')	 /* if its a character */
 			{
-				_print_char(va_arg(args, int));	/* Get the next character */
+				_print_char(args);	/* Get the next character */
 				c_counted++;
 				i++;
 			}
 			else if (format[i + 1] == 's')	/* if its a string */
 			{
 				i++;
-				str = va_arg(args, char*);	/* Get the next string and store it in str */
-				c_counted++;
-				_print_str(str);
+				/* Get the next string and store it in str */
+				_print_str(args);
 			}
 			else if (format[i + 1] == '%')	/* if its a percentage sign */
 			{
 				i++;
-				_print_char('%');
+				_putchar('%');
 				c_counted++;
 			}
 		}

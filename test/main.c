@@ -12,8 +12,8 @@ int main(void)
 {
 	/* int n = 0; */
 
-	_printf("Hello %s\n", "Victoria");
-	printf("Hello %s\n", "Victoria");
+	_printf("Hello %c\n", 'V');
+	printf("Hello %c\n", 'V');
 
 	/* n = _printf("%%\n");
 	printf("n: %d\n", n);
