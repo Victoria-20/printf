@@ -7,9 +7,8 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int i = 0, k = 0;
+	int i = 0, c_counted = 0;
 	char *str = "NULL";
-	int c_counted = 0;
 
 	va_start(args, format); /* Iitialize the arguments */
 	while (format[i] != '\0')
@@ -19,12 +18,11 @@ int _printf(const char *format, ...)
 			_putchar(format[i]);
 			c_counted++;
 		}
-		else
+		else	/* format[i] == '%' */
 		{
-			/* format[i] == '%' */
 			if (format[i + 1] == 'c')	 /* if its a character */
 			{
-				_putchar(va_arg(args, int));	/* Get the next character */
+				_print_char(va_arg(args, int));	/* Get the next character */
 				c_counted++;
 				i++;
 			}
@@ -32,17 +30,12 @@ int _printf(const char *format, ...)
 			{
 				i++;
 				str = va_arg(args, char*);	/* Get the next string and store it in str */
-				while (str[k] != '\0')
-				{
-					_putchar(str[k]);
-					c_counted++;
-					k++;
-				}
+				_print_str(str);
 			}
 			else if (format[i + 1] == '%')	/* if its a percentage sign */
 			{
 				i++;
-				_putchar('%');
+				_print_char('%');
 				c_counted++;
 			}
 		}

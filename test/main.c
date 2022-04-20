@@ -10,12 +10,15 @@
 
 int main(void)
 {
-	int n = 0;
+	/* int n = 0; */
 
-	n = _printf("%%\n");
+	_printf("Hello %s\n", "Victoria");
+	printf("Hello %s\n", "Victoria");
+
+	/* n = _printf("%%\n");
 	printf("n: %d\n", n);
 
 	n = printf("%%\n");
-	printf("n: %d\n", n);
+	printf("n: %d\n", n); */
 	return (0);
 }
