@@ -9,6 +9,7 @@ int _printf(const char *format, ...)
 	va_list args;
 	int i = 0, k = 0;
 	char *str = "NULL";
+	int c_counted = 0;
 
 	va_start(args, format); /* Iitialize the arguments */
 	while (format[i] != '\0')
@@ -16,6 +17,7 @@ int _printf(const char *format, ...)
 		if (format[i] != '%')
 		{
 			_putchar(format[i]);
+			c_counted++;
 		}
 		else
 		{
@@ -23,6 +25,7 @@ int _printf(const char *format, ...)
 			if (format[i + 1] == 'c')	 /* if its a character */
 			{
 				_putchar(va_arg(args, int));	/* Get the next character */
+				c_counted++;
 				i++;
 			}
 			else if (format[i + 1] == 's')	/* if its a string */
@@ -32,6 +35,7 @@ int _printf(const char *format, ...)
 				while (str[k] != '\0')
 				{
 					_putchar(str[k]);
+					c_counted++;
 					k++;
 				}
 			}
@@ -39,10 +43,11 @@ int _printf(const char *format, ...)
 			{
 				i++;
 				_putchar('%');
+				c_counted++;
 			}
 		}
 		i++;
 	}
 	va_end(args);
-	return (0);
+	return (c_counted);
 }

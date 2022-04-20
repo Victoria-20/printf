@@ -10,7 +10,12 @@
 
 int main(void)
 {
-	_printf("%%\n");
-	printf("%%\n");
+	int n = 0;
+
+	n = _printf("%%\n");
+	printf("n: %d\n", n);
+
+	n = printf("%%\n");
+	printf("n: %d\n", n);
 	return (0);
 }
